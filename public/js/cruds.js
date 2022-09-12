@@ -1,0 +1,2 @@
+showItem();
+itemSetup();

@@ -1,0 +1,182 @@
+@media (min-width: 850px) {
+  .CRUDS__header:hover .clock-wrapper {
+    transform: scale(1) translate(-25px, -10px);
+    background: #db2777;
+    box-shadow: 0px 0px 6px black;
+  }
+  .CRUDS__header:hover .clock-wrapper * {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+  .CRUDS__header:hover .options {
+    transform: scale(0.9) translate(40px, -5px);
+    background: #db2777;
+    box-shadow: 0px 0px 6px black;
+  }
+  .CRUDS__header:hover .options * {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+  .CRUDS__header:hover .brand {
+    transform: scale(0.9) translate(7px, -29px);
+    background: #db2777;
+    box-shadow: 0px 0px 6px black;
+    background: #5e5e5e29;
+    box-shadow: none;
+    border-bottom: 1px solid;
+  }
+  .CRUDS__header:hover .brand * {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+  .CRUDS__header:hover .addition-button {
+    transform: scale(1) translate(10px, 10px);
+    background: #db2777;
+    box-shadow: 0px 0px 6px black;
+  }
+  .CRUDS__header:hover .addition-button * {
+    color: #fff !important;
+    opacity: 1 !important;
+  }
+}
+@media (min-width: 1px) and (max-width: 640px) {
+  .CRUDS__body--Wrapper {
+    flex-wrap: nowrap;
+    min-width: 500px;
+  }
+
+  .CRUDS__header-top--headline {
+    order: -1;
+    flex-basis: 100%;
+    text-align: center;
+    background: #db2777;
+    padding: 10px 0;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #121036;
+}
+
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+  display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.expanded {
+  flex-grow: 0 !important;
+  width: 0;
+  transition: witth 0.4s;
+}
+.expanded > * {
+  width: 100%;
+  padding: 0;
+}
+
+.item-selected {
+  background: #256be9;
+  color: #fff !important;
+}
+
+.square-template {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px calc(5% / 4);
+  padding: 10px;
+  transition: all 0.5s;
+}
+.square-template > .item {
+  height: 163px;
+  text-align: center;
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-basis: calc(95% / 4);
+  color: #000000 !important;
+  font-weight: normal;
+  padding: 0px 10px;
+  background: none;
+  box-shadow: 0px 0px 8px 1px #5e5e5e9e;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.square-template > .item > * {
+  border: none !important;
+  flex-basis: 100%;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 10px;
+}
+.square-template > .item .item-pre-define {
+  display: inline-block !important;
+  font-weight: bold;
+}
+.square-template > .item > div:nth-child(1) {
+  flex-basis: fit-content;
+  align-items: center !important;
+  order: -1;
+}
+.square-template > .item > div:nth-child(2) {
+  flex-direction: row !important;
+}
+.square-template > .item > div:nth-child(2) span:last-child {
+  order: -1 !important;
+}
+.square-template > .item .actions {
+  order: -1;
+  flex-basis: fit-content;
+}
+.square-template > .item .actions > i {
+  margin: 0 !important;
+}
+
+.item-pre-define {
+  display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+.CRUDS__body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.CRUDS__body::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+}
+
+/* Handle on hover */
+.CRUDS__body::-webkit-scrollbar-thumb:hover {
+  background: #9d9d9d;
+}
+
+.not-found {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("https://thumbs.dreamstime.com/b/swear-face-expression-emoji-outline-icon-swear-face-expression-emoji-outline-icon-linear-style-sign-mobile-concept-web-126907549.jpg");
+  background-size: 400px;
+}

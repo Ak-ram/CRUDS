@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"
+    /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script
+      src="http://kit.fontawesome.com/25a2e6c7e8.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="./style/cruds.css" />
+    <link rel="stylesheet" href="./style/icons/style.css">
+    <title>CRUDS</title>
+  </head>
+  <body
+    class="antialiased text-slate-500 dark:text-slate-400 m-0 p-0 font-normal h-screen flex items-center justify-center select-none font-['Montserrat']"
+  >
+    <div class="CRUDS text-white w-11/12">
+      <div class="container m-auto">
+        <header class="CRUDS__header">
+          <section
+            class="CRUDS__header-top flex justify-between items-center flex-wrap bg-light-blue"
+          >
+            <div
+              class="clock-wrapper transition-all duration-700 min-w-[16%] flex items-center justify-center flex-wrap p-3"
+            ></div>
+            <div class="CRUDS__header-top--headline">
+              <h1 class="m-0 font-light">Basic CRUD UI</h1>
+            </div>
+            <div>
+              <div
+                class="brand transition-all duration-700 capitalize p-1 text-center text-sm bg-dull-blue"
+              >
+                aloader gym
+              </div>
+              <div
+                class="options transition-all duration-700 flex items-center justify-around"
+              >
+                <i
+                  class="not-italic	 flex text-center cursor-pointer opacity-30 p-1 basis-1/3"
+                >🤡</i>
+                <i
+                  class="icon-align_horizontal_left  text-center cursor-pointer opacity-30 p-1 basis-1/3"
+                  id="grid-row-switcher"
+                ></i>
+
+                <i
+                  onclick="deleteAllItems()"
+                  id="delete-all-items"
+                  class="icon-trash-2 text-center cursor-pointer opacity-30 p-1 basis-1/3"
+                ></i>
+              </div>
+            </div>
+          </section>
+          <section class="bg-dark-blue flex items-center justify-center">
+            <div class="flex items-center justify-start grow text-sm px-3 py-2">
+              <div
+                class="cursor-pointer flex items-center justify-center text-slate-400 hover:text-white p-2"
+                id="search-icon"
+                onclick="open_close_searchBox()"
+              >
+                <i class="icon-search"></i>
+              </div>
+              <div
+                class="flex-row expanded flex items-center justify-center text-slate-400 hover:text-white h-7 items-stretch grow-[0.4] ease-in-out transition-all duration-500"
+              >
+                <input
+                  style="box-shadow: none !important"
+                  type="search"
+                  id="search-box"
+                  placeholder="Search By category"
+                  class="!appearance-none text-sm caret-pink-500 w-4/5 bg-[#34325361] p-0 border-0 text-pink-500"
+                />
+              </div>
+              <div
+                class="cursor-pointer m-left-1 flex items-center justify-center text-slate-400 hover:text-white"
+                id="filter-icon"
+                onclick="open_close_categoryBox()"
+              >
+                <i class="icon-filter"></i>
+                <small class="text-[11px]">Category</small>
+                <ul
+                  class="hidden bg-white text-black p-0 my-0 mx-2"
+                  id="category-box"
+                >
+                  <li
+                    onclick="getSearchMode(this.id)"
+                    id="price"
+                    class="px-2 hover:bg-pink-600 hover:text-white"
+                  >
+                    Price
+                  </li>
+                  <li
+                    onclick="getSearchMode(this.id)"
+                    id="category"
+                    class="px-2 hover:bg-pink-600 hover:text-white"
+                  >
+                    Category
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-center text-sm">
+              <div>
+                <span id="items-number">0 Item</span>
+              </div>
+              <div
+                class="addition-button transition-all duration-700 cursor-pointer px-3 py-2 z-20"
+                id="adding-button"
+              >
+                <i class="icon-plus-circle text-2xl"></i>
+              </div>
+            </div>
+          </section>
+        </header>
+
+        <main
+          class="CRUDS__body h-cruds-body bg-white overflow-auto text-dark-blue"
+        >
+          <div class="CRUDS__body--Wrapper">
+            <header
+              class="bg-light-blue text-white grid p-3 text-sm items-center text-center sticky top-0 z-10 grid-cols-6"
+            >
+              <div>
+                <span id="selected-items">0</span>
+
+                <i
+                  id="delete-selected-items"
+                  class="icon-trash-2 cursor-pointer"
+                ></i>
+              </div>
+              <div class="checkbox">ID</div>
+              <div class="requestNo">Category</div>
+              <div class="area">Brand</div>
+              <div>Price</div>
+              <div>Actions</div>
+            </header>
+
+            <div
+              class="item grid grid-cols-6 h-[45px] addItem hidden"
+              id="addingNewItemPopup"
+              style="background: #03083a; color: #fff"
+            >
+              <div
+                class="checkbox flex items-center justify-center cursor-not-allowed text-slate-600"
+              >
+                <i class="icon-check-square"></i>
+              </div>
+              <div
+                class="item-date flex flex-col items-center justify-center capitalize"
+              >
+                <input
+                  oninput="inputHandle(this)"
+                  type="text"
+                  placeholder="31RS12"
+                  id="new-item-id"
+                  maxlength="6"
+                  class="w-full h-7 text-sm rounded-sm bg-transparent outline-none border-0 text-center"
+                  data-item-date="required-field"
+                />
+              </div>
+              <div class="flex items-center justify-center capitalize">
+                <input
+                  oninput="inputHandle(this)"
+                  type="text"
+                  placeholder="Mobile"
+                  maxlength="10"
+                  minlength="2"
+                  id="new-item-category"
+                  class="w-full h-7 text-sm rounded-sm bg-transparent outline-none border-0 text-center"
+                  data-item-date="required-field"
+                />
+              </div>
+              <div
+                class="text-slate-600 flex items-center justify-center capitalize"
+              >
+                <input
+                  oninput="inputHandle(this)"
+                  type="text"
+                  placeholder="Samsung"
+                  id="new-item-brand"
+                  class="w-full h-7 rounded-sm text-sm text-white bg-transparent outline-none border-0 text-center"
+                  data-item-date="required-field"
+                  maxlength="10"
+                  minlength="1"
+                />
+              </div>
+              <div class="flex items-center justify-center capitalize">
+                <input
+                  oninput="inputHandle(this)"
+                  type="number"
+                  placeholder="10 L.E"
+                  id="new-item-price"
+                  class="w-full h-7 rounded-sm text-sm bg-transparent outline-none border-0 text-center"
+                  data-item-date="required-field"
+                  onKeyPress="if(this.value.length>=5) return false"
+                />
+              </div>
+
+              <div class="actions flex items-center justify-center capitalize">
+                <button
+                  id="new-item-button"
+                  class="disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer bg-pink-600 border-0 text-white text-sm uppercase px-4 py-1 rounded-sm"
+                  disabled
+                >
+                  add
+                </button>
+              </div>
+            </div>
+
+            <section
+              class="transition-all duration-300"
+              id="items-wrapper"
+            ></section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./js/custom-tailwind.js"></script>
+    <script src="./js/variables.js"></script>
+    <script src="./js/create.js"></script>
+    <script src="./js/read.js"></script>
+    <script src="./js/update.js"></script>
+    <script src="./js/delete.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/clock.js"></script>
+    <script src="./js/cruds.js"></script>
+  </body>
+</html>

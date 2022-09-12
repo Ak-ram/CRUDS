@@ -1,0 +1,116 @@
+@use './_helpers' as *
+
+*
+    box-sizing: border-box
+body
+    background: #121036
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration
+    display: none
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+  margin: 0
+
+
+/* Firefox */
+input[type=number]
+  -moz-appearance: textfield
+
+// animations
+.expanded
+    flex-grow: 0 !important
+    width: 0
+    transition: witth .4s
+    > *
+        width: 100%
+        padding: 0
+// Item classes
+
+.item-selected
+    background: map-get($light-theme,selected-item)
+    color: map-get($light-theme,luster) !important
+
+.square-template
+    display: flex
+    justify-content: flex-start
+    flex-wrap: wrap
+    align-items: center
+    gap: 10px calc(5% / 4)
+    padding: 10px
+    transition: all .5s
+    > .item
+        height: 163px
+        text-align: center
+        display: flex !important
+        flex-wrap: wrap
+        align-items: center
+        justify-content: space-between
+        flex-basis: calc(95% / 4)
+        color: #000000 !important
+        font-weight: normal
+        padding: 0px 10px
+        background: none
+        box-shadow: 0px 0px 8px 1px #5e5e5e9e
+        border-radius: 3px
+        font-size: 12px
+        > *
+            border: none !important
+            flex-basis: 100%
+            justify-content: flex-start !important
+            align-items: flex-start !important
+            gap: 10px
+        .item-pre-define
+            display: inline-block !important
+            font-weight: bold
+        > div:nth-child(1)
+            flex-basis: fit-content
+            align-items: center !important
+            order: -1
+        > div:nth-child(2)
+            flex-direction: row !important
+            span:last-child
+                order: -1 !important
+        .actions
+            > i
+                margin: 0 !important
+            order: -1
+            flex-basis: fit-content
+
+.item-pre-define
+    display: none
+
+/* width */
+::-webkit-scrollbar 
+  width: 8px
+  height: 8px
+
+/* Track */
+.CRUDS__body::-webkit-scrollbar-track 
+  background: #f1f1f1
+
+
+/* Handle */
+.CRUDS__body::-webkit-scrollbar-thumb 
+  background: #bdbdbd
+
+
+/* Handle on hover */
+.CRUDS__body::-webkit-scrollbar-thumb:hover 
+  background: #9d9d9d
+#palette
+    > div
+        // clip-path: path("M161 188.375C170 193.5 177.919 193.854 186 188.375C197.919 180.294 197.919 159.581 186 151.5C177.919 146.021 169.081 146.021 161 151.5C149.081 159.581 152 183.25 161 188.375ZM145.5 70.5C127 70.5 112 24.5202 89.5 42C77.6254 51.2251 94.3244 85.6756 87.5 92.5C81.0365 98.9635 61.5 85.5 53.5 112C45.5 138.5 74.5 143.25 74.5 154C74.5 164.751 36.6441 162.082 39.5 185.5C42 206 86.5365 194.537 93 201C100.5 213.5 52 251.495 80 263.5C103 273.362 118 222.5 141 222.5C151.261 222.5 156.5 271.5 182.5 268C202.988 265.242 192.5 222.5 205.5 213.5C218.5 204.5 267.5 235 279.5 213.5C292.936 189.427 235.5 171 235.5 154C232.5 135.5 282.5 113.5 267.5 87.5C254.5 70.5 218 96 201.5 92.5C186 84 196 42 175.5 38C157.5 31.5 155.991 70.5 145.5 70.5ZM138 129C129.877 116.815 108.623 116.815 100.5 129C95.0844 137.123 95.0844 145.877 100.5 154C108.623 166.185 129.877 166.185 138 154C143.416 145.877 143.416 137.123 138 129Z")
+.not-found
+    background-repeat: no-repeat
+    background-position: center
+    background-image: url('https://thumbs.dreamstime.com/b/swear-face-expression-emoji-outline-icon-swear-face-expression-emoji-outline-icon-linear-style-sign-mobile-concept-web-126907549.jpg')
+    background-size: 400px
+
+
+// .light-mode
+//     #{$alpha-text-color}: #fff
+//     #{$beta-text-color}: #bdbdbd

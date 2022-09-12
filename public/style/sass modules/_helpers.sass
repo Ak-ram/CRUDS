@@ -1,0 +1,38 @@
+//colors
+
+$light-theme: ('selected-item':#256be9,'luster':#fff)
+
+//mixins
+=pop($scale,$translateX,$translateY)
+    transform: scale($scale) translate($translateX, $translateY)
+    background: #db2777
+    box-shadow: 0px 0px 6px black
+    *
+        color: #fff !important
+        opacity: 1 !important
+
+// media
+@media ( min-width: 850px )
+    .CRUDS__header
+        &:hover
+            .clock-wrapper
+                +pop(1,-25px, -10px)
+            .options
+                +pop(.9,40px, -5px)
+            .brand
+                +pop(.9,7px, -29px)
+                background: #5e5e5e29
+                box-shadow: none
+                border-bottom: 1px solid
+            .addition-button
+                +pop(1,10px, 10px)
+@media ( min-width: 1px ) and (max-width: 640px)
+    .CRUDS__body--Wrapper
+        flex-wrap: nowrap
+        min-width: 500px
+    .CRUDS__header-top--headline
+        order: -1
+        flex-basis: 100%
+        text-align: center
+        background: #db2777
+        padding: 10px 0
